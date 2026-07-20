@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://d1qcfu11i73ac"]
+
+[ext_resource type="Texture2D" uid="uid://bp3gno7fd5aux" path="res://images/backgrounds/chapters/chapter_01/ui/ChatGPT Image 2026年7月18日 12_53_36 (8).png" id="1_0vhb1"]
+[ext_resource type="Texture2D" uid="uid://dqf2ckkeq8gc0" path="res://images/backgrounds/chapters/chapter_01/sky/sky3.png" id="2_3m1km"]
+[ext_resource type="Texture2D" uid="uid://yh41s6cf6yhc" path="res://images/backgrounds/chapters/chapter_01/ui/ui2.png" id="2_bdgol"]
+[ext_resource type="Shader" uid="uid://c1kry00mfadjk" path="res://scenes/stages/chapter_01/BattleStage.gdshader" id="2_usl1m"]
+[ext_resource type="Texture2D" uid="uid://3ce77obbwpk8" path="res://images/backgrounds/chapters/chapter_01/foreground/yuanshan1.png" id="2_ynaxf"]
+[ext_resource type="Texture2D" uid="uid://dwnfsfmkrf2ho" path="res://images/backgrounds/chapters/chapter_01/mid_background/zhongjing.png" id="3_7dwyg"]
+[ext_resource type="Texture2D" uid="uid://cdb0553g5adh6" path="res://images/backgrounds/chapters/chapter_01/ui/ui3.png" id="3_usl1m"]
+[ext_resource type="Texture2D" uid="uid://cxaraf2xsmu38" path="res://images/backgrounds/chapters/chapter_01/ground/diban1.png" id="4_qffhp"]
+[ext_resource type="Texture2D" uid="uid://dvf7vo2scv7og" path="res://images/backgrounds/chapters/chapter_01/far_background/zhedang1.png" id="4_wk48i"]
+[ext_resource type="Texture2D" uid="uid://b4fsn17nlldn1" path="res://images/backgrounds/chapters/chapter_01/zhongjing/zhongjing2.png" id="6_ieapi"]
+[ext_resource type="PackedScene" uid="uid://bhpkcilpmya5b" path="res://scenes/characters/heroes/warrior/warrior.tscn" id="6_v11fl"]
+[ext_resource type="Texture2D" uid="uid://6n3tm4onf6un" path="res://images/backgrounds/chapters/chapter_01/ground/diban2.png" id="11_6vvow"]
+[ext_resource type="Script" uid="uid://nmfoh51bbk3w" path="res://scripts/stages/camera_rig.gd" id="12_0rt2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmyvm"]
+size = Vector2(1600, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkw1"]
+size = Vector2(40, 900)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ieapi"]
+shader = ExtResource("2_usl1m")
+shader_parameter/blur_amount = 1.5
+
+[node name="BattleStage" type="Node2D" unique_id=1894997607]
+
+[node name="BackgroundRoot" type="Node2D" parent="." unique_id=1341760215]
+
+[node name="SkyParallax" type="Parallax2D" parent="BackgroundRoot" unique_id=1362038189]
+scroll_scale = Vector2(0.08, 1)
+repeat_size = Vector2(1672, 0)
+repeat_times = 2
+
+[node name="Sky" type="Sprite2D" parent="BackgroundRoot/SkyParallax" unique_id=604339348]
+z_index = -100
+position = Vector2(976, 457)
+scale = Vector2(1.186, 1)
+texture = ExtResource("2_3m1km")
+
+[node name="shumu" type="Sprite2D" parent="BackgroundRoot" unique_id=1312583398]
+z_index = -1
+position = Vector2(512, 317)
+scale = Vector2(0.80820304, 0.8986112)
+texture = ExtResource("3_usl1m")
+
+[node name="xingxing" type="Sprite2D" parent="BackgroundRoot" unique_id=25528401]
+z_index = -10
+position = Vector2(728, 442)
+texture = ExtResource("6_ieapi")
+
+[node name="FarMountain" type="Sprite2D" parent="BackgroundRoot" unique_id=438547597]
+visible = false
+z_index = -70
+position = Vector2(992, 358)
+scale = Vector2(1.33948, 1)
+texture = ExtResource("2_ynaxf")
+
+[node name="MidBackground" type="Sprite2D" parent="BackgroundRoot" unique_id=1846064884]
+visible = false
+z_index = -50
+position = Vector2(647, 464)
+scale = Vector2(0.91261387, 0.6517014)
+texture = ExtResource("3_7dwyg")
+
+[node name="ForegroundPlants" type="Sprite2D" parent="BackgroundRoot" unique_id=1455732292]
+visible = false
+z_index = 50
+position = Vector2(1121, 622.00006)
+scale = Vector2(0.64816356, 1.6896559)
+texture = ExtResource("4_wk48i")
+
+[node name="GroundRoot" type="Node2D" parent="." unique_id=1670898277]
+
+[node name="Ground3" type="Sprite2D" parent="GroundRoot" unique_id=2100420118]
+visible = false
+position = Vector2(1226, 666.25)
+scale = Vector2(1.2183336, 1.2678573)
+texture = ExtResource("4_qffhp")
+
+[node name="GroundParallax" type="Parallax2D" parent="GroundRoot" unique_id=1728225323]
+repeat_size = Vector2(1672, 0)
+repeat_times = 3
+
+[node name="Ground" type="Sprite2D" parent="GroundRoot/GroundParallax" unique_id=1549673067]
+position = Vector2(765.8249, 640.45087)
+texture = ExtResource("11_6vvow")
+
+[node name="PhysicsRoot" type="Node2D" parent="." unique_id=1010248043]
+
+[node name="WorldGround" type="StaticBody2D" parent="PhysicsRoot" unique_id=2050238380]
+
+[node name="GroundCollision" type="CollisionShape2D" parent="PhysicsRoot/WorldGround" unique_id=1803863512]
+position = Vector2(702, 693)
+shape = SubResource("RectangleShape2D_wmyvm")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="PhysicsRoot" unique_id=1195634927]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsRoot/LeftBoundary" unique_id=177659069]
+position = Vector2(-60, 386)
+shape = SubResource("RectangleShape2D_txkw1")
+
+[node name="CameraRig" type="Node2D" parent="." unique_id=1690699598 node_paths=PackedStringArray("target")]
+script = ExtResource("12_0rt2m")
+target = NodePath("../BattleRoot/UnitsRoot/Warrior")
+use_horizontal_limits = true
+
+[node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=1751803969]
+process_callback = 0
+
+[node name="BattleRoot" type="Node2D" parent="." unique_id=606923790]
+position = Vector2(-68, -127)
+
+[node name="BattleArea" type="Node2D" parent="BattleRoot" unique_id=1373017535]
+
+[node name="HeroPosition_Warrior" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=204452009]
+position = Vector2(300, 600)
+
+[node name="HeroPosition_Mage" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=10894656]
+position = Vector2(220, 550)
+
+[node name="HeroPosition_Taoist" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=727094344]
+position = Vector2(140, 520)
+
+[node name="EnemySpawn_Right" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=1231000461]
+position = Vector2(1200, 600)
+
+[node name="EnemySpawn_Top" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=1716833039]
+position = Vector2(1100, 480)
+
+[node name="EnemySpawn_Bottom" type="Marker2D" parent="BattleRoot/BattleArea" unique_id=2127358904]
+position = Vector2(1100, 650)
+
+[node name="UnitsRoot" type="Node2D" parent="BattleRoot" unique_id=780797250]
+y_sort_enabled = true
+position = Vector2(148, 0)
+
+[node name="Warrior" parent="BattleRoot/UnitsRoot" unique_id=365935795 instance=ExtResource("6_v11fl")]
+position = Vector2(195, 612)
+
+[node name="ForegroundRoot" type="Node2D" parent="." unique_id=1931679208]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1619161855]
+
+[node name="ui2" type="Sprite2D" parent="CanvasLayer" unique_id=884923343]
+modulate = Color(1, 1, 1, 0.78431374)
+z_index = 80
+material = SubResource("ShaderMaterial_ieapi")
+position = Vector2(639, 628)
+texture = ExtResource("2_bdgol")
+
+[node name="ui" type="Sprite2D" parent="CanvasLayer" unique_id=1813649587]
+z_index = 100
+position = Vector2(640, 360)
+texture = ExtResource("1_0vhb1")
